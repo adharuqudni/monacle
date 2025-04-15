@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 195 80% 50%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 270 80% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 195 80% 50%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .neon-card {
+    @apply relative rounded-lg overflow-hidden;
+  }
+
+  .neon-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: 0.5rem;
+    background: linear-gradient(to right, #00ffff, #ff00ff);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .neon-border {
+    @apply relative;
+  }
+
+  .neon-border::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: 0.375rem;
+    background: linear-gradient(to right, #00ffff, #ff00ff);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .glass-effect {
+    @apply bg-black/30 backdrop-blur-md border border-white/10;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .tag {
+    /* Frame 107 */
+
+    /* Auto layout */
+    padding: 8px 12px;
+    gap: 10px;
+    font-size: 12px;
+    width: 83px;
+    height: 32px;
+    white-space: nowrap;
+    /* Gradient/Primary */
+    background: linear-gradient(90deg, #15b6fc 0%, #9d7bea 100%);
+    border-radius: 1000px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+}
