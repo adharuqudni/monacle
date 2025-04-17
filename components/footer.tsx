@@ -6,9 +6,9 @@ export function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Monocle Agency</h3>
             <p className="text-gray-400 mb-4">
-              1234 Market Street, Suite 1000
+              Monocle Street, Suite 1000
               <br />
-              San Francisco, CA 94103 US
+              12240 JKT
             </p>
           </div>
 
@@ -62,10 +62,10 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-medium mb-4">Contact</h4>
             <ul className="space-y-2">
-              <li className="text-gray-400">+1 (415) 123-4567</li>
+              <li className="text-gray-400">+62 000 000</li>
               <li>
                 <a href="mailto:contact@monocle.com" className="text-gray-400 hover:text-white transition-colors">
-                  contact@monocle.com
+                  hello@monocleagency.co.id
                 </a>
               </li>
             </ul>
@@ -75,7 +75,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8">
-          <p className="text-gray-500 text-center">© 2023 Monocle Agency</p>
+          <p className="text-gray-500 text-center">© 2025 Monocle Digital Agency</p>
         </div>
       </div>
     </footer>

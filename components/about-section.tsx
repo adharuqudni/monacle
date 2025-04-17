@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 export function AboutSection() {
   return (
@@ -32,17 +32,28 @@ export function AboutSection() {
             viewport={{ once: true }}
           >
             <span className="tag mb-4">About Us</span>
-            <h2 className="text-3xl md:text-4xl font-bold my-6">Driven by Purpose, Built for Impact</h2>
+            <h2 className="text-3xl md:text-4xl font-bold my-6">
+              Driven by Purpose, Built for Impact
+            </h2>
             <p className="text-gray-300 mb-6">
-              We are a digital marketing agency with a passion for creativity, strategy, and results. Our team brings
-              together strategists and innovators to help brands grow in dynamic digital spaces. From startups to
-              established businesses, we partner with those who dare to do things differently. Together, we turn ideas
-              into measurable impact across digital platforms.
+              Not just looking - we focus.
+              <br />
+              As a digital agency, we bring clarity in the blur, frame ideas
+              with purpose, and sharpen every angle until they cut through the
+              noise. 
+              <br />
+              We don't just play in digital - we see throught it
             </p>
-            <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-              <a href="#" className="inline-flex items-center text-secondary font-medium">
-                Learn more about our team
-                <svg
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <a
+                href="#"
+                className="inline-flex items-center text-secondary font-medium"
+              >
+                {/* Learn more about our team */}
+                {/* <svg
                   className="ml-2 w-4 h-4"
                   fill="none"
                   stroke="currentColor"
@@ -55,12 +66,12 @@ export function AboutSection() {
                     strokeWidth="2"
                     d="M14 5l7 7m0 0l-7 7m7-7H3"
                   ></path>
-                </svg>
+                </svg> */}
               </a>
             </motion.div>
           </motion.div>
         </div>
       </div>
     </section>
-  )
+  );
 }

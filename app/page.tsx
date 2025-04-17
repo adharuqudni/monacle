@@ -1,11 +1,11 @@
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { TrustedBy } from "@/components/trusted-by"
+import { Mission } from "@/components/our-mission"
 import { AboutSection } from "@/components/about-section"
-import { CaseStudySlider } from "@/components/case-study-slider"
 import { Case } from "@/components/case-study"
 import { ProcessSection } from "@/components/process-section"
-import { ServicesGrid } from "@/components/services-grid"
+import { Service } from "@/components/i-service"
 import { CtaBanner } from "@/components/cta-banner"
 import { Footer } from "@/components/footer"
 import { Suspense } from "react"
@@ -21,11 +21,11 @@ export default function Home() {
         <TrustedBy />
       </Suspense>
       <Suspense fallback={<div className="py-24">Loading...</div>}>
+        <Mission />
+      </Suspense>
+      <Suspense fallback={<div className="py-24">Loading...</div>}>
         <AboutSection />
       </Suspense>
-      {/* <Suspense fallback={<div className="py-24">Loading...</div>}>
-        <CaseStudySlider />
-      </Suspense> */}
       <Suspense fallback={<div className="py-24">Loading...</div>}>
         <Case />
       </Suspense>
@@ -33,7 +33,7 @@ export default function Home() {
         <ProcessSection />
       </Suspense>
       <Suspense fallback={<div className="py-24">Loading...</div>}>
-        <ServicesGrid />
+        <Service />
       </Suspense>
       <Suspense fallback={<div className="">Loading...</div>}>
         <CtaBanner />

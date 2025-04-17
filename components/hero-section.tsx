@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
+import { useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export function HeroSection() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
     try {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
       const particles: {
-        x: number
-        y: number
-        size: number
-        speedX: number
-        speedY: number
-        opacity: number
-      }[] = []
+        x: number;
+        y: number;
+        size: number;
+        speedX: number;
+        speedY: number;
+        opacity: number;
+      }[] = [];
 
       const createParticles = () => {
         for (let i = 0; i < 100; i++) {
@@ -36,61 +36,64 @@ export function HeroSection() {
             speedX: (Math.random() - 0.5) * 0.5,
             speedY: (Math.random() - 0.5) * 0.5,
             opacity: Math.random() * 0.5 + 0.2,
-          })
+          });
         }
-      }
+      };
 
       const animateParticles = () => {
         try {
-          ctx.clearRect(0, 0, canvas.width, canvas.height)
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
 
           for (let i = 0; i < particles.length; i++) {
-            const p = particles[i]
-            ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`
-            ctx.beginPath()
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-            ctx.fill()
+            const p = particles[i];
+            ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
 
-            p.x += p.speedX
-            p.y += p.speedY
+            p.x += p.speedX;
+            p.y += p.speedY;
 
-            if (p.x > canvas.width) p.x = 0
-            if (p.x < 0) p.x = canvas.width
-            if (p.y > canvas.height) p.y = 0
-            if (p.y < 0) p.y = canvas.height
+            if (p.x > canvas.width) p.x = 0;
+            if (p.x < 0) p.x = canvas.width;
+            if (p.y > canvas.height) p.y = 0;
+            if (p.y < 0) p.y = canvas.height;
           }
 
-          requestAnimationFrame(animateParticles)
+          requestAnimationFrame(animateParticles);
         } catch (error) {
-          console.error("Error in animation:", error)
+          console.error("Error in animation:", error);
         }
-      }
+      };
 
       const handleResize = () => {
         try {
-          canvas.width = window.innerWidth
-          canvas.height = window.innerHeight
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
         } catch (error) {
-          console.error("Error in resize handler:", error)
+          console.error("Error in resize handler:", error);
         }
-      }
+      };
 
-      createParticles()
-      animateParticles()
+      createParticles();
+      animateParticles();
 
-      window.addEventListener("resize", handleResize)
+      window.addEventListener("resize", handleResize);
 
       return () => {
-        window.removeEventListener("resize", handleResize)
-      }
+        window.removeEventListener("resize", handleResize);
+      };
     } catch (error) {
-      console.error("Error in canvas setup:", error)
+      console.error("Error in canvas setup:", error);
     }
-  }, [])
+  }, []);
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full"></canvas>
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+      ></canvas>
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -105,7 +108,7 @@ export function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            Elevating Brands with Smart Digital <span className="text-secondary">Strategies</span>
+            Seeing Through <span className="text-secondary">the Noise</span>
           </motion.h1>
           <motion.p
             className="text-gray-300 text-center mb-8"
@@ -113,8 +116,9 @@ export function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            We help businesses grow through data-driven campaigns, creative content, and targeted digital solutions
-            tailored to your goals.
+            Clarity isn’t found — it’s crafted. We help brands focus, zoom in on
+            what matters, and cut through the clutter of a crowded digital
+            world.
           </motion.p>
           <motion.div
             className="flex justify-center"
@@ -129,5 +133,5 @@ export function HeroSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
