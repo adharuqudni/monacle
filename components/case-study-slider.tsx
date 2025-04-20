@@ -109,11 +109,11 @@ export function CaseStudySlider() {
                 alt="Case Study"
                 width={600}
                 height={400}
-                className=" object-cover opacity-70 transition-all duration-300 hover:opacity-100"
+                className=" object-cover opacity-70 transition-all duration-300 hover:opacity-100   h-full "
               />
 
               {/* Decorative element */}
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-r from-neon-purple to-neon-blue rounded-full opacity-30 blur-xl"></div>
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-r from-neon-purple to-neon-blue rounded-full opacity-30 blur-xl z-10"></div>
             </div>
           </div>
         </div>
