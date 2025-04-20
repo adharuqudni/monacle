@@ -7,12 +7,20 @@ import Marquee from 'react-fast-marquee';
 export function TrustedBy() {
   // Create multiple logos for the infinite carousel
   const logos = [
-    '/aws.png?height=30&width=100',
-    '/aws.png?height=30&width=100',
-    '/aws.png?height=30&width=100',
-    '/aws.png?height=30&width=100',
-    '/aws.png?height=30&width=100',
-    '/aws.png?height=30&width=100',
+    '/images/Logo_Client/AHM.png?height=30&width=100',
+    '/images/Logo_Client/Aiqqon.png?height=30&width=100',
+    '/images/Logo_Client/Bank BRI.png?height=30&width=100',
+    '/images/Logo_Client/Binance.png?height=30&width=100',
+    '/images/Logo_Client/Countrywood.png?height=30&width=100',
+    '/images/Logo_Client/Eegslap.png?height=30&width=100',
+    '/images/Logo_Client/Generali.png?height=30&width=100',
+    '/images/Logo_Client/Helloilmare.png?height=30&width=100',
+    '/images/Logo_Client/Pegadaian.png?height=30&width=100',
+    '/images/Logo_Client/PP.png?height=30&width=100',
+    '/images/Logo_Client/RHB.png?height=30&width=100',
+    '/images/Logo_Client/Telkom.png?height=30&width=100',
+    '/images/Logo_Client/Transvision.png?height=30&width=100',
+    '/images/Logo_Client/Zeta Garde.png?height=30&width=100',
   ];
 
   // Duplicate the logos to create a seamless loop
