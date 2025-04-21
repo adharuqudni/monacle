@@ -6,9 +6,9 @@ export function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Monocle Agency</h3>
             <p className="text-gray-400 mb-4">
-              1234 Market Street, Suite 1000
+              {/* 1234 Market Street, Suite 1000 */}
               <br />
-              San Francisco, CA 94103 US
+              {/* San Francisco, CA 94103 US */}
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-medium mb-4">Contact</h4>
             <ul className="space-y-2">
-              <li className="text-gray-400">+1 (415) 123-4567</li>
+              <li className="text-gray-400">+62-817-842-484</li>
               <li>
                 <a href="mailto:contact@monocle.com" className="text-gray-400 hover:text-white transition-colors">
                   hello@monocleagency.co.id
