@@ -12,7 +12,7 @@ export function TrustedBy() {
     '/images/Logo_Client/Bank BRI.png?height=30&width=100',
     '/images/Logo_Client/Binance.png?height=30&width=100',
     '/images/Logo_Client/Countrywood.png?height=30&width=100',
-    '/images/Logo_Client/Eegslap.png?height=30&width=100',
+    '/images/Logo_Client/Eggslap.png?height=30&width=100',
     '/images/Logo_Client/Generali.png?height=30&width=100',
     '/images/Logo_Client/Helloilmare.png?height=30&width=100',
     '/images/Logo_Client/Pegadaian.png?height=30&width=100',

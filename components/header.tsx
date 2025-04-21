@@ -57,15 +57,17 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Contact Button */}
+        {/* Contact Button (Desktop Version) */}
         <div className="hidden md:block">
-          <Button
-            variant="outline"
-            className="rounded-full bg-gray-200 text-black hover:bg-white flex items-center gap-2"
-          >
-            <Phone size={16} />
-            Contact Us
-          </Button>
+          <a href="https://wa.me/nomor_telepon_anda">
+            <Button
+              variant="outline"
+              className="rounded-full bg-gray-200 text-black hover:bg-white flex items-center gap-2"
+            >
+              <Phone size={16} />
+              Contact Us
+            </Button>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -88,13 +90,15 @@ export function Header() {
                 {link.name}
               </Link>
             ))}
-            <Button
-              variant="outline"
-              className="rounded-full bg-gray-200 text-black hover:bg-white flex items-center gap-2 justify-center"
-            >
-              <Phone size={16} />
-              Contact Us
-            </Button>
+            <a href="https://wa.me/+62895801102898">
+              <Button
+                variant="outline"
+                className="rounded-full bg-gray-200 text-black hover:bg-white flex items-center gap-2 justify-center"
+              >
+                <Phone size={16} />
+                Contact Us
+              </Button>
+            </a>
           </div>
         </div>
       )}

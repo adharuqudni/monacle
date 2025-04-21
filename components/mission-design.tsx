@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 
-export function AboutSection() {
+export function MissionDesign() {
   return (
     <section
-      id="about"
+      id="mission"
       className="section-padding bg-cover bg-center relative"
       style={{ backgroundImage: 'url("/images/bg/about.png")' }}
     >
@@ -15,39 +15,22 @@ export function AboutSection() {
       {/* Konten utama dengan z-index agar tampil di atas overlay */}
       <div className="relative z-10 container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Teks di kiri */}
           <motion.div
-            className="relative"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="relative w-full h-[400px] overflow-hidden rounded-lg transform rotate-3 shadow-xl hover:rotate-0 transition-transform duration-500">
-              <img
-                src="/images/Elements/About Us Photo.png?height=400&width=600"
-                alt="Team photo"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-            </div>
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full opacity-30 blur-xl"></div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <span className="tag mb-4">About Us</span>
+            <span className="tag mb-4">Our Mission</span>
             <h2 className="text-3xl md:text-4xl font-bold my-6">
-              We are Lenses.
+              We don’t add noise — we sharpen signal.
             </h2>
             <p className="text-gray-300 mb-6">
-              Not just looking — we focus. As a digital agency, we bring clarity
-              in the blur, frame ideas with purpose, and sharpen every angle
-              until they cut through the noise. We don’t just play in digital —
-              we see through it.
+              Monocle exists to empower brands with focused, high-performing
+              digital marketing. We blend precision with creativity, crafting
+              bold ideas that cut through and drive what matters. Not just
+              partners — we’re your second set of eyes in the digital chaos.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -74,6 +57,25 @@ export function AboutSection() {
                 </svg>
               </a>
             </motion.div>
+          </motion.div>
+
+          {/* Gambar di kanan, tidak terpotong */}
+          <motion.div
+            className="relative flex justify-center items-center"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative w-full max-w-[600px] h-auto overflow-hidden rounded-lg shadow-xl">
+              <img
+                src="/images/Elements/Mission.png"
+                alt="Team photo"
+                className="w-full h-auto object-contain"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent pointer-events-none"></div>
+            </div>
+            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full opacity-30 blur-xl"></div>
           </motion.div>
         </div>
       </div>

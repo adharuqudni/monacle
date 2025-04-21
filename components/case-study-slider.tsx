@@ -1,144 +1,222 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 const cases = [
   {
-    title: "Bumi\Langit",
-    image: "/images/Case Studies Element/GIF Bumi Langit.gif",
+    title: "Bumi Langit",
+    image: "/images/case_study/bumi.png",
+    link: "https://bumilangit.com",
     description:
-      "We helped a growing beauty brand increase their online visibility through a multi-platform digital campaign. By combining paid ads, influencer outreach, and precise audience targeting, we tripled their monthly leads. The campaign achieved a 4.5x return on ad spend in just 2 months.",
+      "Bumilangit is a leading Asian entertainment company specializing in character-based intellectual property. With a vast library of over 1,200 comic book characters developed over six decades, Bumilangit is one of Asia's largest comic book universes.",
   },
   {
     title: "Helloilmare",
-    image: "/images/Case Studies Element/GIF Helloilmare.gif",
+    image: "/images/case_study/helloilmare.png",
+    link: "https://helloilmare.com",
     description:
-      "A tech startup approached us for a complete brand overhaul. We developed a new visual identity, messaging framework, and digital presence that positioned them as industry innovators. The rebrand resulted in 70% increased engagement and helped secure their Series A funding.",
+      "Helloilmare is an upholstery service brand focused on sofa renewal. With Monocle's performance ads, conversions rate increased by 41% in 2 months. No budget increase. Just sharper targeting and tailored creatives.",
   },
   {
-    title: "RHB\nTradesmart",
-    image: "images/Case Studies Element/GIF RHB.gif",
+    title: "RHB Tradesmart",
+    image: "/images/case_study/rhb.png",
+    link: "https://www.rhbtradesmart.co.id",
     description:
-      "We transformed an underperforming e-commerce store into a conversion machine. Through UX improvements, strategic product positioning, and targeted marketing campaigns, we increased conversion rates by 135% and grew monthly revenue by 210% within 6 months.",
+      "RHB Tradesmart is the first trading application in Indonesia with the Assisted Robo Optimization (ARO) feature that can provide real-time signals to facilitate investment. In these past 3 years, the organic traffic increase by 700%. Owned organic keywords increase ninefold.",
   },
   {
-    title: "Trinivi",
-    image: "images/Case Studies Element/Logo Trinivi.png",
+    title: "Trinvi",
+    image: "/images/case_study/trinvi.png",
+    link: "https://www.instagram.com/reel/CkAtx0zpYj9/?img_index=cubmuofficial",
     description:
-      "We transformed an underperforming e-commerce store into a conversion machine. Through UX improvements, strategic product positioning, and targeted marketing campaigns, we increased conversion rates by 135% and grew monthly revenue by 210% within 6 months.",
+      "We led a 360° marketing campaign for TRINVI by Transvision covering social media, media outreach, ads, SEO, NFT, smart contract, and website development. Resulting in 30% of NFTs sold out at launch.",
   },
-]
+];
 
 export function CaseStudySlider() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState("next");
+
+  const handleNavigation = (newIndex: number, dir: "prev" | "next") => {
+    if (isAnimating) return;
+
+    setIsAnimating(true);
+    setDirection(dir);
+    setCurrentIndex(newIndex);
+
+    // Reset animation state after transition completes
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 500);
+  };
 
   const prevCase = () => {
-    setCurrentIndex((prev) => (prev === 0 ? cases.length - 1 : prev - 1))
-  }
+    const newIndex = currentIndex === 0 ? cases.length - 1 : currentIndex - 1;
+    handleNavigation(newIndex, "prev");
+  };
 
   const nextCase = () => {
-    setCurrentIndex((prev) => (prev === cases.length - 1 ? 0 : prev + 1))
-  }
+    const newIndex = currentIndex === cases.length - 1 ? 0 : currentIndex + 1;
+    handleNavigation(newIndex, "next");
+  };
 
-  const currentCase = cases[currentIndex]
+  const goToCase = (index: number) => {
+    const dir = index > currentIndex ? "next" : "prev";
+    handleNavigation(index, dir);
+  };
+
+  const currentCase = cases[currentIndex];
+
+  // Auto-advance slider every 6 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isAnimating) {
+        nextCase();
+      }
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, isAnimating]);
 
   return (
-    <section id="case-study" className="py-24 bg-black flex flex-col items-center justify-center">
-      {/* Centered "CASE STUDY" Label */}
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-semibold px-4 py-1.5 rounded-full inline-block">
-        CASE STUDY
-      </div>
-      <br />
-      <div className="max-w-7xl mx-auto px-8 md:px-16">
-        <div className="grid md:grid-cols-2 gap-12 items-center justify-center">
-          {/* Left Column - Text Section */}
-          <div className="flex flex-col justify-center relative text-white ">
-            {/* Title with Arrows */}
-            <div className="flex items-center justify-between mb-6">
-              {/* Left Arrow */}
-              <button
-                onClick={prevCase}
-                className="bg-black border border-white/20 rounded-full p-2 hover:border-neon-blue transition-colors"
-                aria-label="Previous case study"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="m15 18-6-6 6-6" />
-                </svg>
-              </button>
+    <section
+      id="case-study"
+      className="relative py-32 bg-black bg-cover bg-center overflow-hidden"
+      style={{
+        backgroundImage: 'url("/images/bg/case.png")',
+        backgroundAttachment: "fixed",
+      }}
+    >
+      {/* Overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
 
-              {/* Title */}
-              <h2 className="text-3xl md:text-4xl font-bold whitespace-pre-line text-center flex-1 mx-4 w-full whitespace-nowrap">
-                {currentCase.title}
-              </h2>
-
-              {/* Right Arrow */}
-              <button
-                onClick={nextCase}
-                className="bg-black border border-white/20 rounded-full p-2 hover:border-neon-blue transition-colors"
-                aria-label="Next case study"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </button>
-            </div>
-
-          </div>
-
-          {/* Right Column - Image Section */}
-          <div className="flex justify-center">
-            <div className="w-full max-w-[600px] h-[400px] rounded-xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 relative">
-
-              <Image
-                src={currentCase.image}
-                alt="Case Study"
-                width={600}
-                height={400}
-                className=" object-cover opacity-70 transition-all duration-300 hover:opacity-100   h-full "
-              />
-
-              {/* Decorative element */}
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-r from-neon-purple to-neon-blue rounded-full opacity-30 blur-xl z-10"></div>
-            </div>
-          </div>
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        <div className="text-center mb-16 relative z-10">
+          <span className="tag mb-4">Case Study</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Our Success Stories
+          </h2>
+          <p className="text-white/70 max-w-2xl mx-auto">
+            Explore how we've helped businesses transform their digital presence
+            and achieve remarkable results.
+          </p>
         </div>
 
-        {/* Pagination Dots */}
-        <div className="flex justify-center mt-12 space-x-3">
-          {cases.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                index === currentIndex ? "bg-blue-500" : "bg-gray-600"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+            {/* Left Column - Content */}
+            <div className="relative">
+              <div
+                key={currentIndex}
+                className={cn(
+                  "flex flex-col justify-center text-white transition-all duration-500 ease-out",
+                  isAnimating
+                    ? direction === "next"
+                      ? "translate-y-4 opacity-0"
+                      : "-translate-y-4 opacity-0"
+                    : "translate-y-0 opacity-100"
+                )}
+              >
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 whitespace-pre-line">
+                  {currentCase.title}
+                </h3>
+
+                <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8">
+                  {currentCase.description}
+                </p>
+
+                <div className="flex items-center space-x-4 mb-8">
+                  <Link 
+                    href={currentCase.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group px-6 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all duration-300 flex items-center space-x-2 transform hover:translate-y-[-2px]"
+                  >
+                    <span>View Details</span>
+                    <ExternalLink className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" />
+                  </Link>
+                </div>
+
+                {/* Navigation Controls - Now placed below content text */}
+                <div className="flex items-center space-x-4">
+                  <button
+                    onClick={prevCase}
+                    className="group flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300"
+                    aria-label="Previous case study"
+                  >
+                    <ChevronLeft className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
+                  </button>
+                  
+                  <div className="flex items-center space-x-2">
+                    {cases.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToCase(index)}
+                        className={cn(
+                          "w-2 h-2 rounded-full transition-all duration-300",
+                          index === currentIndex
+                            ? "bg-white w-6"
+                            : "bg-white/40 hover:bg-white/60"
+                        )}
+                        aria-label={`Go to case study ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                  
+                  <button
+                    onClick={nextCase}
+                    className="group flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300"
+                    aria-label="Next case study"
+                  >
+                    <ChevronRight className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Decorative element */}
+              <div className="absolute -left-8 -bottom-12 w-24 h-24 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-2xl"></div>
+            </div>
+
+            {/* Right Column - Image */}
+            <div className="relative h-[60vh] max-h-[500px] md:h-[50vh] lg:h-[60vh] lg:max-h-[600px]">
+              <div
+                key={`image-${currentIndex}`}
+                className={cn(
+                  "w-full h-full relative rounded-xl overflow-hidden transition-all duration-500 ease-out",
+                  isAnimating
+                    ? direction === "next"
+                      ? "translate-x-8 opacity-0"
+                      : "-translate-x-8 opacity-0"
+                    : "translate-x-0 opacity-100"
+                )}
+              >
+                {/* Image frame with gradient border */}
+                <div className="absolute -inset-0.5 bg-gradient-to-br from-purple-500/50 to-blue-500/50 rounded-xl blur-sm"></div>
+
+                <div className="absolute inset-0 bg-black/50 rounded-xl z-0"></div>
+
+                <div className="absolute inset-[1px] bg-gray-900 rounded-xl overflow-hidden">
+                  <Image
+                    src={currentCase.image}
+                    alt={`${currentCase.title} case study`}
+                    fill
+                    priority
+                    className="object-cover object-center opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  />
+                </div>
+
+                {/* Decorative elements */}
+                <div className="absolute -bottom-4 -right-4 w-40 h-40 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-2xl"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
-

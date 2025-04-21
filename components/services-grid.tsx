@@ -1,60 +1,72 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BarChart, Smartphone, Code, LineChart } from 'lucide-react';
-import { JSX, useState } from 'react';
+import { useState } from 'react';
 
 const services = [
   {
-    icon: <BarChart className="h-10 w-10 text-neon-blue" />,
+    icon: '/images/Elements/Digital Campaign Logo.png',
     title: 'Digital Campaign',
     description:
-      'Create impactful campaigns that drive awareness, engagement, and conversions across digital touchpoints.',
+      'Strategic and data-driven campaigns executed across digital platforms to build awareness, engagement, and conversions.',
     detailedDescription:
       'Our digital campaigns combine strategic planning, creative execution, and data-driven optimization to deliver measurable results. We handle everything from concept development to implementation across multiple platforms.',
+    backgroundImage: '/images/bg/about.png',
   },
   {
-    icon: <Smartphone className="h-10 w-10 text-neon-purple" />,
+    icon: '/images/Elements/Social Activation Logo.png',
     title: 'Social Activation',
     description:
-      'Build meaningful connections with your audience through strategic social media management and content.',
+      'Creative social media initiatives that spark real-time engagement, including influencer collaborations, interactive content, and live commerce experiences to boost visibility and drive conversions',
     detailedDescription:
       'Our social activation services help brands create authentic connections with their audience through strategic content and community management. We develop tailored social strategies that align with your brand voice.',
+    backgroundImage: '/images/bg/about.png',
   },
   {
-    icon: <Code className="h-10 w-10 text-neon-blue" />,
+    icon: '/images/Elements/Tech & Development Logo.png',
     title: 'Tech & Development',
     description:
       'Develop cutting-edge websites and applications with seamless user experiences and robust functionality.',
     detailedDescription:
       'Our development team creates digital experiences that combine stunning design with powerful functionality. From responsive websites to custom applications, we build solutions that meet your specific business needs.',
+    backgroundImage: '/images/bg/about.png',
   },
   {
-    icon: <LineChart className="h-10 w-10 text-neon-purple" />,
+    icon: '/images/Elements/Performance Marketing.png',
     title: 'Performance',
     description:
-      'Optimize your digital presence for maximum ROI through data-driven insights and continuous improvement.',
+      'Design and development of digital platforms such as websites, apps, microsites, blockchain-based solutions, and interactive tools tailored for functionality and user experience',
     detailedDescription:
       'Our performance marketing services focus on maximizing your return on investment through data-driven strategies and continuous optimization. We analyze user behavior, conversion paths, and campaign performance.',
+    backgroundImage: '/images/bg/about.png',
+  },
+  {
+    icon: '/images/Elements/SEO Logo.png',
+    title: 'SEO',
+    description:
+      'Optimization of website structure, content, and authority to improve organic visibility and search engine rankings including article development, media publishing, and comprehensive site audits',
+    detailedDescription:
+      'Our performance marketing services focus on maximizing your return on investment through data-driven strategies and continuous optimization. We analyze user behavior, conversion paths, and campaign performance.',
+    backgroundImage: '/images/bg/about.png',
   },
 ];
 
-// Card component with flip animation
 const FlipCard = ({
   service,
 }: {
   service: {
-    icon: JSX.Element;
+    icon: string;
     title: string;
     description: string;
     detailedDescription: string;
+    backgroundImage: string;
   };
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      className="h-[320px] perspective-1000 cursor-pointer"
+      className="h-[250px] w-[240px] perspective-1000 cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -67,35 +79,31 @@ const FlipCard = ({
       >
         {/* Front of card */}
         <motion.div
-          className="absolute w-full h-full bg-gradient-to-b from-black to-gray-900 border border-gray-800 rounded-lg p-6 hover:shadow-neon transition-shadow duration-300 flex flex-col items-center justify-center"
-          style={{ backfaceVisibility: 'hidden' }}
+          className="absolute w-full h-full bg-black bg-opacity-50 border border-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"
+          style={{
+            backfaceVisibility: 'hidden',
+            backgroundImage: `url(${service.backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
         >
-          <div
-            className={`bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl w-24 h-24 flex items-center justify-center mb-6`}
-          >
-            {service.icon}
+          <div className="rounded-2xl w-20 h-20 flex items-center justify-center mb-4">
+            <img src={service.icon} alt={service.title} className="w-16 h-16" />
           </div>
-          <h3 className="text-xl font-bold text-white text-center">
-            {service.title}
-          </h3>
-          {/* <p className="text-gray-300">{service.description}</p> */}
+          <h3 className="text-lg font-bold text-white text-center">{service.title}</h3>
         </motion.div>
 
         {/* Back of card */}
         <motion.div
-          className="absolute w-full h-full bg-gradient-to-b from-gray-900 to-black border border-gray-800 rounded-lg p-6 hover:shadow-neon transition-shadow duration-300"
+          className="absolute w-full h-full bg-gradient-to-b from-gray-900 to-black border border-gray-800 rounded-lg p-4 flex flex-col justify-center"
           style={{
             backfaceVisibility: 'hidden',
             rotateY: 180,
             transformStyle: 'preserve-3d',
           }}
         >
-          <h3 className="text-xl font-bold mb-3 text-neon-blue">
-            {service.title}
-          </h3>
-          <p className="text-gray-300 text-sm mb-4">
-            {service.detailedDescription}
-          </p>
+          <h3 className="text-lg font-bold mb-2 text-neon-blue">{service.title}</h3>
+          <p className="text-gray-300 text-sm">{service.detailedDescription}</p>
         </motion.div>
       </motion.div>
     </div>
@@ -123,7 +131,13 @@ export function ServicesGrid() {
   };
 
   return (
-    <section id="services" className="section-padding bg-black">
+    <section
+      id="services"
+      className="section-padding bg-black bg-cover bg-center"
+      style={{
+        backgroundImage: 'url(/images/bg/services.png)', // Ganti dengan URL gambar background yang diinginkan
+      }}
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="tag mb-4">Our Services</span>
@@ -134,20 +148,18 @@ export function ServicesGrid() {
             We combine creative strategy, smart execution, and data-driven
             optimization to help you thrive in the digital world.
           </p>
-          <p className="text-gray-400 text-sm mt-4">
-            Hover over a service to learn more
-          </p>
+          <p className="text-gray-400 text-sm mt-4">Hover over a service to learn more</p>
         </div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 justify-center items-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
           {services.map((service, index) => (
-            <motion.div key={index} variants={itemVariants}>
+            <motion.div key={index} variants={itemVariants} className="flex justify-center">
               <FlipCard service={service} />
             </motion.div>
           ))}
