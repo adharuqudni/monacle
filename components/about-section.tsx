@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 export function AboutSection() {
   return (
@@ -16,7 +16,7 @@ export function AboutSection() {
           >
             <div className="relative w-full h-[400px] overflow-hidden rounded-lg transform rotate-3 shadow-xl hover:rotate-0 transition-transform duration-500">
               <img
-                src="/placeholder.svg?height=400&width=600"
+                src="/images/Elements/About Us Photo.png?height=400&width=600"
                 alt="Team photo"
                 className="w-full h-full object-cover"
               />
@@ -32,15 +32,23 @@ export function AboutSection() {
             viewport={{ once: true }}
           >
             <span className="tag mb-4">About Us</span>
-            <h2 className="text-3xl md:text-4xl font-bold my-6">Driven by Purpose, Built for Impact</h2>
+            <h2 className="text-3xl md:text-4xl font-bold my-6">
+              We are Lenses.
+            </h2>
             <p className="text-gray-300 mb-6">
-              We are a digital marketing agency with a passion for creativity, strategy, and results. Our team brings
-              together strategists and innovators to help brands grow in dynamic digital spaces. From startups to
-              established businesses, we partner with those who dare to do things differently. Together, we turn ideas
-              into measurable impact across digital platforms.
+              Not just looking — we focus. As a digital agency, we bring clarity
+              in the blur, frame ideas with purpose, and sharpen every angle
+              until they cut through the noise. We don’t just play in digital —
+              we see through it.
             </p>
-            <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-              <a href="#" className="inline-flex items-center text-secondary font-medium">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <a
+                href="#"
+                className="inline-flex items-center text-secondary font-medium"
+              >
                 Learn more about our team
                 <svg
                   className="ml-2 w-4 h-4"
@@ -62,5 +70,5 @@ export function AboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

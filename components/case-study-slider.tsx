@@ -5,20 +5,26 @@ import Image from "next/image";
 
 const cases = [
   {
-    title: "Digital\nCampaign",
-    image: "/case1.png",
+    title: "Bumi\Langit",
+    image: "/images/Case Studies Element/GIF Bumi Langit.gif",
     description:
       "We helped a growing beauty brand increase their online visibility through a multi-platform digital campaign. By combining paid ads, influencer outreach, and precise audience targeting, we tripled their monthly leads. The campaign achieved a 4.5x return on ad spend in just 2 months.",
   },
   {
-    title: "Brand\nRedesign",
-    image: "/case2.jpeg",
+    title: "Helloilmare",
+    image: "/images/Case Studies Element/GIF Helloilmare.gif",
     description:
       "A tech startup approached us for a complete brand overhaul. We developed a new visual identity, messaging framework, and digital presence that positioned them as industry innovators. The rebrand resulted in 70% increased engagement and helped secure their Series A funding.",
   },
   {
-    title: "E-commerce\nGrowth",
-    image: "/case3.jpg",
+    title: "RHB\nTradesmart",
+    image: "images/Case Studies Element/GIF RHB.gif",
+    description:
+      "We transformed an underperforming e-commerce store into a conversion machine. Through UX improvements, strategic product positioning, and targeted marketing campaigns, we increased conversion rates by 135% and grew monthly revenue by 210% within 6 months.",
+  },
+  {
+    title: "Trinivi",
+    image: "images/Case Studies Element/Logo Trinivi.png",
     description:
       "We transformed an underperforming e-commerce store into a conversion machine. Through UX improvements, strategic product positioning, and targeted marketing campaigns, we increased conversion rates by 135% and grew monthly revenue by 210% within 6 months.",
   },

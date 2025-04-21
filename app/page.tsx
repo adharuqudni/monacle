@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { TrustedBy } from "@/components/trusted-by"
 import { AboutSection } from "@/components/about-section"
+import { Mission } from "@/components/our-mission"
 import { CaseStudySlider } from "@/components/case-study-slider"
 import { ProcessSection } from "@/components/process-section"
 import { ServicesGrid } from "@/components/services-grid"
@@ -21,6 +22,9 @@ export default function Home() {
       </Suspense>
       <Suspense fallback={<div className="py-24">Loading...</div>}>
         <AboutSection />
+      </Suspense>
+      <Suspense fallback={<div className="py-24">Loading...</div>}>
+        <Mission />
       </Suspense>
       <Suspense fallback={<div className="py-24">Loading...</div>}>
         <CaseStudySlider />

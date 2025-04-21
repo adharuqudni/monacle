@@ -65,7 +65,7 @@ export function Footer() {
               <li className="text-gray-400">+1 (415) 123-4567</li>
               <li>
                 <a href="mailto:contact@monocle.com" className="text-gray-400 hover:text-white transition-colors">
-                  contact@monocle.com
+                  hello@monocleagency.co.id
                 </a>
               </li>
             </ul>
@@ -75,7 +75,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8">
-          <p className="text-gray-500 text-center">© 2023 Monocle Agency</p>
+          <p className="text-gray-500 text-center">© 2025 Monocle Digital Agency</p>
         </div>
       </div>
     </footer>

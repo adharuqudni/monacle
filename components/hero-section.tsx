@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
 import TiltedCard from './ui/tilt-card';
 
 export function HeroSection() {
@@ -15,87 +14,35 @@ export function HeroSection() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    try {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    const image = new Image();
+    image.src = '/images/bg/hero.png'; // Ganti dengan path gambar kamu di folder /public
 
-      const particles: {
-        x: number;
-        y: number;
-        size: number;
-        speedX: number;
-        speedY: number;
-        opacity: number;
-      }[] = [];
-
-      const createParticles = () => {
-        for (let i = 0; i < 100; i++) {
-          particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 2,
-            speedX: (Math.random() - 0.5) * 0.5,
-            speedY: (Math.random() - 0.5) * 0.5,
-            opacity: Math.random() * 0.5 + 0.2,
-          });
-        }
+    image.onload = () => {
+      const resizeCanvas = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
       };
 
-      const animateParticles = () => {
-        try {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
+      resizeCanvas();
 
-          for (let i = 0; i < particles.length; i++) {
-            const p = particles[i];
-            ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fill();
-
-            p.x += p.speedX;
-            p.y += p.speedY;
-
-            if (p.x > canvas.width) p.x = 0;
-            if (p.x < 0) p.x = canvas.width;
-            if (p.y > canvas.height) p.y = 0;
-            if (p.y < 0) p.y = canvas.height;
-          }
-
-          requestAnimationFrame(animateParticles);
-        } catch (error) {
-          console.error('Error in animation:', error);
-        }
-      };
-
-      const handleResize = () => {
-        try {
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-        } catch (error) {
-          console.error('Error in resize handler:', error);
-        }
-      };
-
-      createParticles();
-      animateParticles();
-
-      window.addEventListener('resize', handleResize);
+      window.addEventListener('resize', resizeCanvas);
 
       return () => {
-        window.removeEventListener('resize', handleResize);
+        window.removeEventListener('resize', resizeCanvas);
       };
-    } catch (error) {
-      console.error('Error in canvas setup:', error);
-    }
+    };
   }, []);
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Canvas Background */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
       ></canvas>
 
+      {/* Foreground Content */}
       <div className="container justify-items-center px-4 relative z-10">
         <TiltedCard
           imageSrc="/hero.png"
