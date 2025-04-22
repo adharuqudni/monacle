@@ -26,6 +26,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/hooks/use-toast"
 import { CheckCircle2 } from "lucide-react"
 
+// ✅ Schema validasi
 const formSchema = z.object({
   name: z.string().min(2, {
     message: "Name must be at least 2 characters.",
@@ -53,17 +54,31 @@ export function LeadsFormSection() {
     },
   })
 
+  // ✅ Submit ke Formspree
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      setIsSuccess(true)
-      toast({
-        title: "Form submitted successfully",
-        description: "We'll get back to you soon!",
+      const response = await fetch("https://formspree.io/f/xjkwvbrw", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(values),
       })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setIsSuccess(true)
+        toast({
+          title: "Form submitted successfully",
+          description: "We'll get back to you soon!",
+        })
+      } else {
+        throw new Error(data?.error || "Form submission failed")
+      }
     } catch (error) {
       toast({
         title: "Something went wrong",
@@ -78,9 +93,8 @@ export function LeadsFormSection() {
   return (
     <section
       className="relative w-full py-12 md:py-24 text-white bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/bg/leads_form.png')" }} // Ganti sesuai gambar kamu
+      style={{ backgroundImage: "url('/images/bg/leads_form.png')" }}
     >
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-0" />
 
       <div className="relative z-10 container px-4 md:px-6">
