@@ -27,7 +27,7 @@ export function ProcessDiagram() {
             <img
               src="/images/how_it_works/works.png"
               alt="Strategic Foundation"
-              className="w-[60%] h-auto object-cover rounded-xl transition-all duration-700 hover:scale-105 mx-auto relative z-20"
+              className="w-[60%] h-auto object-cover rounded-xl mx-auto relative z-20"
               style={{
                 boxShadow: "0 0 40px 8px rgba(0, 0, 0, 0.2)",
                 filter: "drop-shadow(0 0 10px rgba(0, 0, 0, 0.3))",
@@ -37,7 +37,7 @@ export function ProcessDiagram() {
         </div>
 
         {/* Purple Cards (Desktop) */}
-        {[ 
+        {[
           {
             number: 1,
             title: "Observe The Landscape",

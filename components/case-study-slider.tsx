@@ -79,15 +79,15 @@ export function CaseStudySlider() {
   return (
     <section
       id="case-study"
-      className="relative h-screen bg-black bg-cover bg-center bg-no-repeat overflow-hidden flex items-center"
+      className="relative min-h-screen py-16 md:py-24 bg-black bg-cover bg-center bg-no-repeat flex items-center"
       style={{
-        backgroundImage: 'url("/images/bg/1.png")',
+        backgroundImage: 'url("/images/bg/3.png")',
         backgroundAttachment: "fixed",
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+      <div className="container mx-auto px-4 md:px-8 relative z-10 w-full">
         <div
           className={`text-center mb-10 md:mb-16 relative z-10 transition-all duration-1000 ${
             !hasAnimated
@@ -110,7 +110,7 @@ export function CaseStudySlider() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
             <div
-              className={`relative h-[40vh] max-h-[350px] md:h-[50vh] lg:h-[60vh] lg:max-h-[600px] order-first md:order-last transition-all duration-1000 ${
+              className={`relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] order-first md:order-last transition-all duration-1000 ${
                 !hasAnimated
                   ? "opacity-0 translate-x-8"
                   : "opacity-100 translate-x-0"
@@ -140,15 +140,15 @@ export function CaseStudySlider() {
                     : "opacity-100 translate-x-0"
                 }`}
               >
-                <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6 whitespace-pre-line">
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 whitespace-normal">
                   {currentCase.title}
                 </h3>
 
-                <p className="text-white/80 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                <p className="text-white/80 text-base md:text-lg leading-relaxed mb-6">
                   {currentCase.description}
                 </p>
 
-                <div className="flex items-center space-x-4 mb-6 md:mb-8">
+                <div className="flex items-center space-x-4 mb-6">
                   <Link
                     href={currentCase.link}
                     target="_blank"
