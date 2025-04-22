@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
-const cases = [
+// Updated case study data
+const caseStudies = [
   {
     title: "Bumi Langit",
     image: "/images/case_study/bumi.png",
@@ -36,165 +37,124 @@ const cases = [
   },
   {
     title: "Generali",
-    image: "/images/case_study/Generali.png",
+    image: "/images/case_study/generali.png",
     link: "https://www.generali.co.id/",
     description:
       "Generali is an Italian insurance company based in Trieste. As of 2019, it is the largest of its kind in Italy and among the top ten largest insurance companies in the world by net premiums and assets. Organic traffic has increased fifteen-fold over the past 3 years.",
   },
 ];
 
-export function CaseStudySlider() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
+export function CaseStudySection() {
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const prevCase = () => {
-    setCurrentIndex(currentIndex === 0 ? cases.length - 1 : currentIndex - 1);
+  const nextSlide = () => {
+    // Prevent going past the last slide
+    if (activeIndex < caseStudies.length - 1) {
+      setActiveIndex((prevIndex) => prevIndex + 1);
+    }
   };
 
-  const nextCase = () => {
-    setCurrentIndex(currentIndex === cases.length - 1 ? 0 : currentIndex + 1);
+  const prevSlide = () => {
+    // Prevent going before the first slide
+    if (activeIndex > 0) {
+      setActiveIndex((prevIndex) => prevIndex - 1);
+    }
   };
 
-  const goToCase = (index: number) => {
-    setCurrentIndex(index);
+  const goToSlide = (index: number) => {
+    setActiveIndex(index);
   };
 
-  const currentCase = cases[currentIndex];
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setHasAnimated(true);
-    }, 1000);
-
-    const interval = setInterval(() => {
-      nextCase();
-    }, 6000);
-
-    return () => {
-      clearTimeout(timer);
-      clearInterval(interval);
-    };
-  }, [currentIndex]);
+  const activeCase = caseStudies[activeIndex];
 
   return (
     <section
-      id="case-study"
-      className="relative min-h-screen py-16 md:py-24 bg-black bg-cover bg-center bg-no-repeat flex items-center"
+      className="w-full text-white py-16 md:py-24"
       style={{
-        backgroundImage: 'url("/images/bg/3.png")',
-        backgroundAttachment: "fixed",
+        backgroundImage: 'url("/images/bg/5.png")', // Ganti dengan path gambar background
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-
-      <div className="container mx-auto px-4 md:px-8 relative z-10 w-full">
-        <div
-          className={`text-center mb-10 md:mb-16 relative z-10 transition-all duration-1000 ${
-            !hasAnimated
-              ? "opacity-0 translate-y-8"
-              : "opacity-100 translate-y-0"
-          }`}
-        >
-          <div className="text-center mb-16 relative z-10">
-            <span className="tag mb-4">Case Study</span>
-            <h2 className="text-3xl md:text-4xl font-bold my-4">
-              Our Success Stories
-            </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Explore how we've helped businesses transform their digital
-              presence and achieve remarkable results.
-            </p>
-          </div>
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-16 relative z-10">
+          <span className="tag mb-4">Case Study</span>
+          <h2 className="text-3xl md:text-4xl font-bold my-4">
+            Our Success Stories
+          </h2>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            Explore how we&apos;ve helped businesses transform their digital
+            presence and achieve remarkable results.
+          </p>
         </div>
 
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-            <div
-              className={`relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] order-first md:order-last transition-all duration-1000 ${
-                !hasAnimated
-                  ? "opacity-0 translate-x-8"
-                  : "opacity-100 translate-x-0"
-              }`}
-            >
-              <div className="w-full h-full relative rounded-xl overflow-hidden">
-                <div className="absolute -inset-0.5 bg-gradient-to-br from-purple-500/50 to-blue-500/50 rounded-xl blur-sm"></div>
-                <div className="absolute inset-0 bg-black/50 rounded-xl z-0"></div>
-                <div className="absolute inset-[1px] bg-gray-900 rounded-xl overflow-hidden">
-                  <Image
-                    src={currentCase.image}
-                    alt={`${currentCase.title} case study`}
-                    fill
-                    priority
-                    className="object-cover object-center opacity-80 hover:opacity-100 transition-opacity duration-300"
-                  />
-                </div>
-                <div className="absolute -bottom-4 -right-4 w-40 h-40 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-2xl"></div>
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          {/* Image on top for mobile, left for desktop */}
+          <div className="md:col-span-1 md:order-2">
+            <div className="relative">
+              <div className="rounded-lg overflow-hidden shadow-2xl">
+                <Image
+                  src={activeCase.image || "/placeholder.svg"}
+                  alt={activeCase.title}
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-cover"
+                />
               </div>
             </div>
+          </div>
 
-            <div className="relative order-last md:order-first">
-              <div
-                className={`flex flex-col justify-center text-white transition-all duration-1000 ${
-                  !hasAnimated
-                    ? "opacity-0 -translate-x-8"
-                    : "opacity-100 translate-x-0"
-                }`}
+          {/* Text content */}
+          <div className="space-y-6 md:col-span-1 md:order-1">
+            <h3 className="text-3xl md:text-4xl font-bold">
+              {activeCase.title}
+            </h3>
+            <p className="text-gray-300 text-lg">{activeCase.description}</p>
+            <Button
+              variant="outline"
+              className="border-white text-white group hover:bg-transparent hover:text-white hover:border-white"
+              onClick={() => window.open(activeCase.link, "_blank")}
+            >
+              View Details
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+
+            <div className="flex items-center space-x-4 pt-6">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full border border-gray-700 text-white hover:bg-white/10 hover:text-white hover:border-white"
+                onClick={prevSlide}
+                disabled={activeIndex === 0} // Disable prev button on first slide
               >
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 whitespace-normal">
-                  {currentCase.title}
-                </h3>
+                <ChevronLeft className="h-5 w-5" />
+                <span className="sr-only">Previous</span>
+              </Button>
 
-                <p className="text-white/80 text-base md:text-lg leading-relaxed mb-6">
-                  {currentCase.description}
-                </p>
-
-                <div className="flex items-center space-x-4 mb-6">
-                  <Link
-                    href={currentCase.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group px-5 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all duration-300 flex items-center space-x-2 transform hover:translate-y-[-2px]"
-                  >
-                    <span>View Details</span>
-                    <ExternalLink className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" />
-                  </Link>
-                </div>
-
-                <div className="flex items-center space-x-4">
+              <div className="flex space-x-2">
+                {caseStudies.map((_, index) => (
                   <button
-                    onClick={prevCase}
-                    className="group flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300"
-                    aria-label="Previous case study"
-                  >
-                    <ChevronLeft className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
-                  </button>
-
-                  <div className="flex items-center space-x-2">
-                    {cases.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => goToCase(index)}
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                          index === currentIndex
-                            ? "bg-white w-8"
-                            : "bg-white/40 hover:bg-white/60 w-2"
-                        }`}
-                        aria-label={`Go to case study ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={nextCase}
-                    className="group flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300"
-                    aria-label="Next case study"
-                  >
-                    <ChevronRight className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
-                  </button>
-                </div>
+                    key={index}
+                    className={`h-2 rounded-full transition-all ${
+                      index === activeIndex ? "w-8 bg-white" : "w-2 bg-gray-600"
+                    }`}
+                    onClick={() => goToSlide(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
 
-              <div className="absolute -left-8 -bottom-12 w-24 h-24 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-2xl"></div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full border border-gray-700 text-white hover:bg-white/10 hover:text-white hover:border-white"
+                onClick={nextSlide}
+                disabled={activeIndex === caseStudies.length - 1} // Disable next button on last slide
+              >
+                <ChevronRight className="h-5 w-5" />
+                <span className="sr-only">Next</span>
+              </Button>
             </div>
           </div>
         </div>

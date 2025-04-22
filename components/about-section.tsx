@@ -46,7 +46,7 @@ export function AboutSection() {
             <p className="text-gray-300 mb-6">
               Not just looking we focus. As a digital agency, we bring clarity
               in the blur, frame ideas with purpose, and sharpen every angle
-              until they cut through the noise. We don’t just play in digital —
+              until they cut through the noise. We don’t just play in digital
               we see through it.
             </p>
             <motion.div

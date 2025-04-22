@@ -3,7 +3,7 @@ import { HeroSection } from "@/components/hero-section"
 import { TrustedBy } from "@/components/trusted-by"
 import { AboutSection } from "@/components/about-section"
 import { MissionDesign } from "@/components/mission-design"
-import { CaseStudySlider } from "@/components/case-study-slider"
+import { CaseStudySection } from "@/components/case-study-slider"
 import { ProcessDiagram } from "@/components/our-process"
 import { ServicesGrid } from "@/components/services-grid"
 import { CtaBanner } from "@/components/cta-banner"
@@ -28,7 +28,7 @@ export default function Home() {
         <MissionDesign />
       </Suspense>
       <Suspense fallback={<div className="py-24">Loading...</div>}>
-        <CaseStudySlider />
+        <CaseStudySection />
       </Suspense>
       <Suspense fallback={<div className="py-24">Loading...</div>}>
         <ProcessDiagram />

@@ -30,7 +30,7 @@ export function MissionDesign() {
               Monocle exists to empower brands with focused, high-performing
               digital marketing. We blend precision with creativity, crafting
               bold ideas that cut through and drive what matters. Not just
-              partners — we’re your second set of eyes in the digital chaos.
+              partners we’re your second set of eyes in the digital chaos.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
