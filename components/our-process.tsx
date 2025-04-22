@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function ProcessDiagram() {
   return (
@@ -19,136 +19,110 @@ export function ProcessDiagram() {
         </p>
       </div>
 
-      {/* Main Content with Circles and Text Boxes */}
-      <div className="relative max-w-6xl mx-auto">
-        {/* Image - Hidden on mobile, visible on md screens and up */}
+      {/* Main Content */}
+      <div className="relative max-w-7xl mx-auto">
+        {/* Desktop Image */}
         <div className="relative flex justify-center items-center h-[600px] mb-10 hidden md:flex">
-          <div className="absolute transform -translate-y-1/2 top-1/2 z-10">
+          <div className="absolute transform -translate-y-1/2 top-1/2 z-10 w-full px-8">
             <img
               src="/images/how_it_works/works.png"
               alt="Strategic Foundation"
-              className="max-w-full h-auto shadow-lg max-h-[400px] object-contain"
+              className="w-[60%] h-auto object-cover rounded-xl transition-all duration-700 hover:scale-105 mx-auto"
+              style={{
+                boxShadow: "0 0 40px 8px rgba(0, 0, 0, 0.2)",
+                filter: "drop-shadow(0 0 10px rgba(0, 0, 0, 0.3))",
+              }}
             />
           </div>
         </div>
 
-        {/* Text Boxes with Colorful Gradients */}
-        {/* Top Left Box */}
-        <div
-          className="absolute top-0 left-0 md:left-[5%] w-[280px] bg-gray-900/40 backdrop-blur-sm p-5 rounded-lg text-white shadow-xl border-2 border-purple-500 md:block hidden"
-          style={{ boxShadow: "0 0 15px 2px rgba(168, 85, 247, 0.5)" }}
-        >
-          <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-purple-900 flex items-center justify-center font-bold text-white border border-purple-500">
-            1
-          </div>
-          <h3 className="font-bold mb-2 text-lg">Observe The Landscape</h3>
-          <p className="text-sm">
-            We zoom out to see the big picture, mapping trends, signals, and
-            market niches with clarity.
-          </p>
-        </div>
-
-        {/* Bottom Left Box */}
-        <div
-          className="absolute bottom-0 left-0 md:left-[5%] w-[280px] bg-gray-900/40 backdrop-blur-sm p-5 rounded-lg text-white shadow-xl border-2 border-purple-500 md:block hidden"
-          style={{ boxShadow: "0 0 15px 2px rgba(168, 85, 247, 0.5)" }}
-        >
-          <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-purple-900 flex items-center justify-center font-bold text-white border border-purple-500">
-            2
-          </div>
-          <h3 className="font-bold mb-2 text-lg">Frame The Approach</h3>
-          <p className="text-sm">
-            We define the sharpest angle — positioning, messaging, and strategy
-            — with intent and insight.
-          </p>
-        </div>
-
-        {/* Top Right Box */}
-        <div
-          className="absolute top-0 right-0 md:right-[5%] w-[280px] bg-gray-900/40 backdrop-blur-sm p-5 rounded-lg text-white shadow-xl border-2 border-purple-500 md:block hidden"
-          style={{ boxShadow: "0 0 15px 2px rgba(168, 85, 247, 0.5)" }}
-        >
-          <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-purple-900 flex items-center justify-center font-bold text-white border border-purple-500">
-            3
-          </div>
-          <h3 className="font-bold mb-2 text-lg">Refine and Amplify</h3>
-          <p className="text-sm">
-            We bring the strategy to life through bold, audience-centric
-            creative that resonates and stands out.
-          </p>
-        </div>
-
-        {/* Bottom Right Box */}
-        <div
-          className="absolute bottom-0 right-0 md:right-[5%] w-[280px] bg-gray-900/40 backdrop-blur-sm p-5 rounded-lg text-white shadow-xl border-2 border-purple-500 md:block hidden"
-          style={{ boxShadow: "0 0 15px 2px rgba(168, 85, 247, 0.5)" }}
-        >
-          <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-purple-900 flex items-center justify-center font-bold text-white border border-purple-500">
-            4
-          </div>
-          <h3 className="font-bold mb-2 text-lg">Activate with Precision</h3>
-          <p className="text-sm">
-            We optimize, learn, and amplify what works — turning insights into
-            lasting impact.
-          </p>
-        </div>
-
-        {/* Mobile version - stacked cards */}
-        <div className="md:hidden space-y-4 mt-8">
+        {/* Purple Cards (Desktop) */}
+        {[
+          {
+            number: 1,
+            title: "Observe The Landscape",
+            desc: "We zoom out to see the big picture, mapping trends, signals, and market niches with clarity.",
+            position: "top-0 left-0 md:left-[5%]",
+          },
+          {
+            number: 2,
+            title: "Frame The Approach",
+            desc: "We define the sharpest angle — positioning, messaging, and strategy — with intent and insight.",
+            position: "bottom-0 left-0 md:left-[5%]",
+          },
+          {
+            number: 3,
+            title: "Refine and Amplify",
+            desc: "We bring the strategy to life through bold, audience-centric creative that resonates and stands out.",
+            position: "top-0 right-0 md:right-[5%]",
+          },
+          {
+            number: 4,
+            title: "Activate with Precision",
+            desc: "We optimize, learn, and amplify what works — turning insights into lasting impact.",
+            position: "bottom-0 right-0 md:right-[5%]",
+          },
+        ].map((box, i) => (
           <div
-            className="bg-gray-900/40 backdrop-blur-sm p-5 rounded-lg text-white shadow-xl border-2 border-purple-500 relative"
+            key={i}
+            className={`absolute ${box.position} w-[280px] bg-gray-900/60 backdrop-blur-md p-5 rounded-lg text-white shadow-xl border-2 border-purple-500/70 md:block hidden transform transition-all duration-500 hover:-translate-y-2 hover:border-purple-400`}
             style={{ boxShadow: "0 0 15px 2px rgba(168, 85, 247, 0.5)" }}
           >
-            <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-purple-900 flex items-center justify-center font-bold text-white border border-purple-500">
-              1
+            <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-purple-900 flex items-center justify-center font-bold text-white border border-purple-500 animate-pulse">
+              {box.number}
             </div>
-            <h3 className="font-bold mb-2 text-lg">Observe The Landscape</h3>
-            <p className="text-sm">
-              We zoom out to see the big picture, mapping trends, signals, and
-              market niches with clarity.
-            </p>
+            <h3 className="font-bold mb-2 text-lg text-purple-200">
+              {box.title}
+            </h3>
+            <p className="text-sm text-gray-300">{box.desc}</p>
           </div>
+        ))}
 
-          <div
-            className="bg-gray-900/40 backdrop-blur-sm p-5 rounded-lg text-white shadow-xl border-2 border-purple-500 relative"
-            style={{ boxShadow: "0 0 15px 2px rgba(168, 85, 247, 0.5)" }}
-          >
-            <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-purple-900 flex items-center justify-center font-bold text-white border border-purple-500">
-              2
-            </div>
-            <h3 className="font-bold mb-2 text-lg">Frame The Approach</h3>
-            <p className="text-sm">
-              We define the sharpest angle — positioning, messaging, and
-              strategy — with intent and insight.
-            </p>
-          </div>
+        {/* Mobile Version */}
+        <div className="md:hidden space-y-6 mt-8">
+          {[1, 2, 3, 4].map((n, i) => {
+            const titles = [
+              "Observe The Landscape",
+              "Frame The Approach",
+              "Refine and Amplify",
+              "Activate with Precision",
+            ];
+            const descriptions = [
+              "We zoom out to see the big picture, mapping trends, signals, and market niches with clarity.",
+              "We define the sharpest angle — positioning, messaging, and strategy — with intent and insight.",
+              "We bring the strategy to life through bold, audience-centric creative that resonates and stands out.",
+              "We optimize, learn, and amplify what works — turning insights into lasting impact.",
+            ];
+            return (
+              <div
+                key={n}
+                className="bg-gray-900/60 backdrop-blur-md p-5 rounded-lg text-white shadow-xl border-2 border-purple-500/70 relative transform transition-all duration-300 active:scale-95"
+                style={{
+                  boxShadow: "0 0 15px 2px rgba(168, 85, 247, 0.5)",
+                }}
+              >
+                <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-purple-900 flex items-center justify-center font-bold text-white border border-purple-500 animate-pulse">
+                  {n}
+                </div>
+                <h3 className="font-bold mb-2 text-lg text-purple-200">
+                  {titles[i]}
+                </h3>
+                <p className="text-sm text-gray-300">{descriptions[i]}</p>
+              </div>
+            );
+          })}
 
-          <div
-            className="bg-gray-900/40 backdrop-blur-sm p-5 rounded-lg text-white shadow-xl border-2 border-purple-500 relative"
-            style={{ boxShadow: "0 0 15px 2px rgba(168, 85, 247, 0.5)" }}
-          >
-            <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-purple-900 flex items-center justify-center font-bold text-white border border-purple-500">
-              3
-            </div>
-            <h3 className="font-bold mb-2 text-lg">Refine and Amplify</h3>
-            <p className="text-sm">
-              We bring the strategy to life through bold, audience-centric
-              creative that resonates and stands out.
-            </p>
-          </div>
-
-          <div
-            className="bg-gray-900/40 backdrop-blur-sm p-5 rounded-lg text-white shadow-xl border-2 border-purple-500 relative"
-            style={{ boxShadow: "0 0 15px 2px rgba(168, 85, 247, 0.5)" }}
-          >
-            <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-purple-900 flex items-center justify-center font-bold text-white border border-purple-500">
-              4
-            </div>
-            <h3 className="font-bold mb-2 text-lg">Activate with Precision</h3>
-            <p className="text-sm">
-              We optimize, learn, and amplify what works — turning insights into
-              lasting impact.
-            </p>
+          {/* Mobile Image (Hidden) */}
+          <div className="relative py-6">
+            <img
+              src="/images/how_it_works/works.png"
+              alt="Strategic Foundation"
+              className="w-[80%] h-auto object-cover rounded-xl relative z-10 hidden md:block"
+              style={{
+                boxShadow: "0 0 30px 5px rgba(0, 0, 0, 0.2)",
+                filter: "drop-shadow(0 0 10px rgba(0, 0, 0, 0.3))",
+              }}
+            />
           </div>
         </div>
       </div>
