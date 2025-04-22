@@ -6,15 +6,15 @@ export function MissionDesign() {
   return (
     <section
       id="mission"
-      className="section-padding bg-cover bg-center relative"
-      style={{ backgroundImage: 'url("/images/bg/about.png")' }}
+      className="h-screen bg-cover bg-center bg-no-repeat relative"
+      style={{ backgroundImage: 'url("/images/bg/2.png")' }}
     >
       {/* Overlay hitam transparan */}
       <div className="absolute inset-0 bg-black/70"></div>
 
-      {/* Konten utama dengan z-index agar tampil di atas overlay */}
-      <div className="relative z-10 container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      {/* Konten utama di atas overlay */}
+      <div className="relative z-10 container mx-auto px-4 flex items-center h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full">
           {/* Teks di kiri */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -30,7 +30,7 @@ export function MissionDesign() {
               Monocle exists to empower brands with focused, high-performing
               digital marketing. We blend precision with creativity, crafting
               bold ideas that cut through and drive what matters. Not just
-              partners we’re your second set of eyes in the digital chaos.
+              partners — we’re your second set of eyes in the digital chaos.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -59,7 +59,7 @@ export function MissionDesign() {
             </motion.div>
           </motion.div>
 
-          {/* Gambar di kanan, tidak terpotong */}
+          {/* Gambar di kanan */}
           <motion.div
             className="relative flex justify-center items-center"
             initial={{ opacity: 0, x: 50 }}
@@ -70,7 +70,7 @@ export function MissionDesign() {
             <div className="relative w-full max-w-[600px] h-auto overflow-hidden rounded-lg shadow-xl">
               <img
                 src="/images/Elements/Mission.png"
-                alt="Team photo"
+                alt="Mission visual"
                 className="w-full h-auto object-contain"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent pointer-events-none"></div>

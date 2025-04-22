@@ -4,8 +4,8 @@ export function ProcessDiagram() {
   return (
     <div
       id="how-it-works"
-      className="relative w-full min-h-screen bg-cover bg-center overflow-hidden px-4 py-12"
-      style={{ backgroundImage: "url('/images/bg/how_it_works.png')" }}
+      className="relative w-full h-screen bg-cover bg-center overflow-hidden px-4 py-12"
+      style={{ backgroundImage: "url('/images/bg/2.png')" }}
     >
       {/* Header Section */}
       <div className="text-center mb-16 relative z-10">
@@ -23,11 +23,11 @@ export function ProcessDiagram() {
       <div className="relative max-w-7xl mx-auto">
         {/* Desktop Image */}
         <div className="relative flex justify-center items-center h-[600px] mb-10 hidden md:flex">
-          <div className="absolute transform -translate-y-1/2 top-1/2 z-10 w-full px-8">
+          <div className="absolute transform -translate-y-1/2 top-1/2 z-20 w-full px-8">
             <img
               src="/images/how_it_works/works.png"
               alt="Strategic Foundation"
-              className="w-[60%] h-auto object-cover rounded-xl transition-all duration-700 hover:scale-105 mx-auto"
+              className="w-[60%] h-auto object-cover rounded-xl transition-all duration-700 hover:scale-105 mx-auto relative z-20"
               style={{
                 boxShadow: "0 0 40px 8px rgba(0, 0, 0, 0.2)",
                 filter: "drop-shadow(0 0 10px rgba(0, 0, 0, 0.3))",
@@ -37,7 +37,7 @@ export function ProcessDiagram() {
         </div>
 
         {/* Purple Cards (Desktop) */}
-        {[
+        {[ 
           {
             number: 1,
             title: "Observe The Landscape",
@@ -65,8 +65,11 @@ export function ProcessDiagram() {
         ].map((box, i) => (
           <div
             key={i}
-            className={`absolute ${box.position} w-[280px] bg-gray-900/60 backdrop-blur-md p-5 rounded-lg text-white shadow-xl border-2 border-purple-500/70 md:block hidden transform transition-all duration-500 hover:-translate-y-2 hover:border-purple-400`}
-            style={{ boxShadow: "0 0 15px 2px rgba(168, 85, 247, 0.5)" }}
+            className={`absolute ${box.position} w-[280px] p-5 rounded-lg text-white shadow-xl border-2 border-purple-500/70 md:block hidden transform transition-all duration-500 hover:-translate-y-2 hover:border-purple-400`}
+            style={{
+              backgroundColor: "transparent",
+              boxShadow: "0 0 15px 2px rgba(168, 85, 247, 0.5)",
+            }}
           >
             <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-purple-900 flex items-center justify-center font-bold text-white border border-purple-500 animate-pulse">
               {box.number}
@@ -96,8 +99,9 @@ export function ProcessDiagram() {
             return (
               <div
                 key={n}
-                className="bg-gray-900/60 backdrop-blur-md p-5 rounded-lg text-white shadow-xl border-2 border-purple-500/70 relative transform transition-all duration-300 active:scale-95"
+                className="p-5 rounded-lg text-white shadow-xl border-2 border-purple-500/70 relative transform transition-all duration-300 active:scale-95"
                 style={{
+                  backgroundColor: "transparent",
                   boxShadow: "0 0 15px 2px rgba(168, 85, 247, 0.5)",
                 }}
               >

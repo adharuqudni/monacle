@@ -79,9 +79,9 @@ export function CaseStudySlider() {
   return (
     <section
       id="case-study"
-      className="relative py-20 md:py-32 bg-black bg-cover bg-center overflow-hidden"
+      className="relative h-screen bg-black bg-cover bg-center bg-no-repeat overflow-hidden flex items-center"
       style={{
-        backgroundImage: 'url("/images/bg/case.png")',
+        backgroundImage: 'url("/images/bg/1.png")',
         backgroundAttachment: "fixed",
       }}
     >

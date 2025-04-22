@@ -135,7 +135,7 @@ export function ServicesGrid() {
       id="services"
       className="section-padding bg-black bg-cover bg-center"
       style={{
-        backgroundImage: 'url(/images/bg/services.png)',
+        backgroundImage: 'url(/images/bg/1.png)',
       }}
     >
       <div className="container mx-auto px-4">

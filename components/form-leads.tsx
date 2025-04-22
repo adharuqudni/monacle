@@ -93,7 +93,7 @@ export function LeadsFormSection() {
   return (
     <section
       className="relative w-full py-12 md:py-24 text-white bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/bg/leads_form.png')" }}
+      style={{ backgroundImage: "url('/images/bg/6.png')" }}
     >
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-0" />
 

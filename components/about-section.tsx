@@ -6,15 +6,15 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="section-padding bg-cover bg-center relative"
-      style={{ backgroundImage: 'url("/images/bg/about.png")' }}
+      className="h-screen bg-cover bg-center bg-no-repeat relative"
+      style={{ backgroundImage: 'url("/images/bg/1.png")' }}
     >
       {/* Overlay hitam transparan */}
       <div className="absolute inset-0 bg-black/70"></div>
 
       {/* Konten utama dengan z-index agar tampil di atas overlay */}
-      <div className="relative z-10 container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 container mx-auto px-4 flex items-center h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full">
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: -50 }}
@@ -46,7 +46,7 @@ export function AboutSection() {
             <p className="text-gray-300 mb-6">
               Not just looking we focus. As a digital agency, we bring clarity
               in the blur, frame ideas with purpose, and sharpen every angle
-              until they cut through the noise. We don’t just play in digital
+              until they cut through the noise. We don’t just play in digital —
               we see through it.
             </p>
             <motion.div
