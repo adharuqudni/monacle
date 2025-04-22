@@ -4,9 +4,10 @@ import { TrustedBy } from "@/components/trusted-by"
 import { AboutSection } from "@/components/about-section"
 import { MissionDesign } from "@/components/mission-design"
 import { CaseStudySlider } from "@/components/case-study-slider"
-import  ProcessDiagram from "@/components/our-process"
+import { ProcessDiagram } from "@/components/our-process"
 import { ServicesGrid } from "@/components/services-grid"
 import { CtaBanner } from "@/components/cta-banner"
+import { LeadsFormSection } from "@/components/form-leads"
 import { Footer } from "@/components/footer"
 import { Suspense } from "react"
 
@@ -37,6 +38,9 @@ export default function Home() {
       </Suspense>
       <Suspense fallback={<div className="">Loading...</div>}>
         <CtaBanner />
+      </Suspense>
+      <Suspense fallback={<div className="">Loading...</div>}>
+        <LeadsFormSection />
       </Suspense>
       <Footer />
     </main>

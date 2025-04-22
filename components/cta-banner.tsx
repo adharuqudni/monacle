@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import { Button } from '@/components/ui/button';
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { Button } from "@/components/ui/button";
 
 export function CtaBanner() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ['start end', 'end start'],
+    offset: ["start end", "end start"],
   });
 
   const rocketY = useTransform(scrollYProgress, [0, 1], [50, -50]);
@@ -29,7 +29,7 @@ export function CtaBanner() {
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                Ready to Grow Your Brand Online?
+                Clarity in Every Digital Move.
               </motion.h2>
               <motion.p
                 className="text-gray-300 mb-8 text-lg"
@@ -49,7 +49,7 @@ export function CtaBanner() {
               >
                 <div className="p-[2px] justify-self-center md:justify-self-start rounded-full bg-gradient-to-r from-neon-blue to-neon-purple w-[fit-content]">
                   <Button className="bg-black rounded-full text-white px-8 py-6 text-lg hover:bg-gradient-to-r from-neon-blue to-neon-purple transition-shadow duration-300">
-                    Let's Talk Strategy
+                    Make Your Next Step Clear
                   </Button>
                 </div>
               </motion.div>

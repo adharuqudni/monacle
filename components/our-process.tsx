@@ -1,4 +1,6 @@
-export default function ProcessDiagram() {
+import React from 'react';
+
+export function ProcessDiagram() {
   return (
     <div
       id="how-it-works"
@@ -19,8 +21,8 @@ export default function ProcessDiagram() {
 
       {/* Main Content with Circles and Text Boxes */}
       <div className="relative max-w-6xl mx-auto">
-        {/* Image - Centered properly */}
-        <div className="relative flex justify-center items-center h-[600px] mb-10">
+        {/* Image - Hidden on mobile, visible on md screens and up */}
+        <div className="relative flex justify-center items-center h-[600px] mb-10 hidden md:flex">
           <div className="absolute transform -translate-y-1/2 top-1/2 z-10">
             <img
               src="/images/how_it_works/works.png"

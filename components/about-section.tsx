@@ -44,16 +44,16 @@ export function AboutSection() {
               We are Lenses.
             </h2>
             <p className="text-gray-300 mb-6">
-              Not just looking — we focus. As a digital agency, we bring clarity
+              Not just looking we focus. As a digital agency, we bring clarity
               in the blur, frame ideas with purpose, and sharpen every angle
-              until they cut through the noise. We don’t just play in digital —
+              until they cut through the noise. We don’t just play in digital
               we see through it.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <a
+              {/* <a
                 href="#"
                 className="inline-flex items-center text-secondary font-medium"
               >
@@ -72,7 +72,7 @@ export function AboutSection() {
                     d="M14 5l7 7m0 0l-7 7m7-7H3"
                   ></path>
                 </svg>
-              </a>
+              </a> */}
             </motion.div>
           </motion.div>
         </div>

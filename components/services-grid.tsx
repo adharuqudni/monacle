@@ -46,7 +46,7 @@ const services = [
     description:
       'Optimization of website structure, content, and authority to improve organic visibility and search engine rankings including article development, media publishing, and comprehensive site audits',
     detailedDescription:
-      'Our performance marketing services focus on maximizing your return on investment through data-driven strategies and continuous optimization. We analyze user behavior, conversion paths, and campaign performance.',
+      'Optimization of website structure, content, and authority to improve organic visibility and search engine rankings including article development, media publishing, and comprehensive site audits.',
     backgroundImage: '/images/bg/about.png',
   },
 ];
@@ -66,7 +66,7 @@ const FlipCard = ({
 
   return (
     <div
-      className="h-[250px] w-[240px] perspective-1000 cursor-pointer"
+      className="h-[250px] w-full max-w-[240px] perspective-1000 cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -135,7 +135,7 @@ export function ServicesGrid() {
       id="services"
       className="section-padding bg-black bg-cover bg-center"
       style={{
-        backgroundImage: 'url(/images/bg/services.png)', // Ganti dengan URL gambar background yang diinginkan
+        backgroundImage: 'url(/images/bg/services.png)',
       }}
     >
       <div className="container mx-auto px-4">
@@ -152,7 +152,7 @@ export function ServicesGrid() {
         </div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 justify-center items-center"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 gap-y-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

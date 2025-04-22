@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 
@@ -35,114 +34,132 @@ const cases = [
     description:
       "We led a 360° marketing campaign for TRINVI by Transvision covering social media, media outreach, ads, SEO, NFT, smart contract, and website development. Resulting in 30% of NFTs sold out at launch.",
   },
+  {
+    title: "Generali",
+    image: "/images/case_study/Generali.png",
+    link: "https://www.generali.co.id/",
+    description:
+      "Generali is an Italian insurance company based in Trieste. As of 2019, it is the largest of its kind in Italy and among the top ten largest insurance companies in the world by net premiums and assets. Organic traffic has increased fifteen-fold over the past 3 years.",
+  },
 ];
 
 export function CaseStudySlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [direction, setDirection] = useState("next");
-
-  const handleNavigation = (newIndex: number, dir: "prev" | "next") => {
-    if (isAnimating) return;
-
-    setIsAnimating(true);
-    setDirection(dir);
-    setCurrentIndex(newIndex);
-
-    // Reset animation state after transition completes
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 500);
-  };
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   const prevCase = () => {
-    const newIndex = currentIndex === 0 ? cases.length - 1 : currentIndex - 1;
-    handleNavigation(newIndex, "prev");
+    setCurrentIndex(currentIndex === 0 ? cases.length - 1 : currentIndex - 1);
   };
 
   const nextCase = () => {
-    const newIndex = currentIndex === cases.length - 1 ? 0 : currentIndex + 1;
-    handleNavigation(newIndex, "next");
+    setCurrentIndex(currentIndex === cases.length - 1 ? 0 : currentIndex + 1);
   };
 
   const goToCase = (index: number) => {
-    const dir = index > currentIndex ? "next" : "prev";
-    handleNavigation(index, dir);
+    setCurrentIndex(index);
   };
 
   const currentCase = cases[currentIndex];
 
-  // Auto-advance slider every 6 seconds
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setHasAnimated(true);
+    }, 1000);
+
     const interval = setInterval(() => {
-      if (!isAnimating) {
-        nextCase();
-      }
+      nextCase();
     }, 6000);
 
-    return () => clearInterval(interval);
-  }, [currentIndex, isAnimating]);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
+  }, [currentIndex]);
 
   return (
     <section
       id="case-study"
-      className="relative py-32 bg-black bg-cover bg-center overflow-hidden"
+      className="relative py-20 md:py-32 bg-black bg-cover bg-center overflow-hidden"
       style={{
         backgroundImage: 'url("/images/bg/case.png")',
         backgroundAttachment: "fixed",
       }}
     >
-      {/* Overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="text-center mb-16 relative z-10">
-          <span className="tag mb-4">Case Study</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our Success Stories
-          </h2>
-          <p className="text-white/70 max-w-2xl mx-auto">
-            Explore how we've helped businesses transform their digital presence
-            and achieve remarkable results.
-          </p>
+        <div
+          className={`text-center mb-10 md:mb-16 relative z-10 transition-all duration-1000 ${
+            !hasAnimated
+              ? "opacity-0 translate-y-8"
+              : "opacity-100 translate-y-0"
+          }`}
+        >
+          <div className="text-center mb-16 relative z-10">
+            <span className="tag mb-4">Case Study</span>
+            <h2 className="text-3xl md:text-4xl font-bold my-4">
+              Our Success Stories
+            </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              Explore how we've helped businesses transform their digital
+              presence and achieve remarkable results.
+            </p>
+          </div>
         </div>
 
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-            {/* Left Column - Content */}
-            <div className="relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+            <div
+              className={`relative h-[40vh] max-h-[350px] md:h-[50vh] lg:h-[60vh] lg:max-h-[600px] order-first md:order-last transition-all duration-1000 ${
+                !hasAnimated
+                  ? "opacity-0 translate-x-8"
+                  : "opacity-100 translate-x-0"
+              }`}
+            >
+              <div className="w-full h-full relative rounded-xl overflow-hidden">
+                <div className="absolute -inset-0.5 bg-gradient-to-br from-purple-500/50 to-blue-500/50 rounded-xl blur-sm"></div>
+                <div className="absolute inset-0 bg-black/50 rounded-xl z-0"></div>
+                <div className="absolute inset-[1px] bg-gray-900 rounded-xl overflow-hidden">
+                  <Image
+                    src={currentCase.image}
+                    alt={`${currentCase.title} case study`}
+                    fill
+                    priority
+                    className="object-cover object-center opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  />
+                </div>
+                <div className="absolute -bottom-4 -right-4 w-40 h-40 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-2xl"></div>
+              </div>
+            </div>
+
+            <div className="relative order-last md:order-first">
               <div
-                key={currentIndex}
-                className={cn(
-                  "flex flex-col justify-center text-white transition-all duration-500 ease-out",
-                  isAnimating
-                    ? direction === "next"
-                      ? "translate-y-4 opacity-0"
-                      : "-translate-y-4 opacity-0"
-                    : "translate-y-0 opacity-100"
-                )}
+                className={`flex flex-col justify-center text-white transition-all duration-1000 ${
+                  !hasAnimated
+                    ? "opacity-0 -translate-x-8"
+                    : "opacity-100 translate-x-0"
+                }`}
               >
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 whitespace-pre-line">
+                <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6 whitespace-pre-line">
                   {currentCase.title}
                 </h3>
 
-                <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8">
+                <p className="text-white/80 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
                   {currentCase.description}
                 </p>
 
-                <div className="flex items-center space-x-4 mb-8">
-                  <Link 
-                    href={currentCase.link} 
-                    target="_blank" 
+                <div className="flex items-center space-x-4 mb-6 md:mb-8">
+                  <Link
+                    href={currentCase.link}
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="group px-6 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all duration-300 flex items-center space-x-2 transform hover:translate-y-[-2px]"
+                    className="group px-5 py-2.5 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all duration-300 flex items-center space-x-2 transform hover:translate-y-[-2px]"
                   >
                     <span>View Details</span>
                     <ExternalLink className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </div>
 
-                {/* Navigation Controls - Now placed below content text */}
                 <div className="flex items-center space-x-4">
                   <button
                     onClick={prevCase}
@@ -151,23 +168,22 @@ export function CaseStudySlider() {
                   >
                     <ChevronLeft className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
                   </button>
-                  
+
                   <div className="flex items-center space-x-2">
                     {cases.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => goToCase(index)}
-                        className={cn(
-                          "w-2 h-2 rounded-full transition-all duration-300",
+                        className={`h-2 rounded-full transition-all duration-300 ${
                           index === currentIndex
-                            ? "bg-white w-6"
-                            : "bg-white/40 hover:bg-white/60"
-                        )}
+                            ? "bg-white w-8"
+                            : "bg-white/40 hover:bg-white/60 w-2"
+                        }`}
                         aria-label={`Go to case study ${index + 1}`}
                       />
                     ))}
                   </div>
-                  
+
                   <button
                     onClick={nextCase}
                     className="group flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300"
@@ -178,41 +194,7 @@ export function CaseStudySlider() {
                 </div>
               </div>
 
-              {/* Decorative element */}
               <div className="absolute -left-8 -bottom-12 w-24 h-24 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-2xl"></div>
-            </div>
-
-            {/* Right Column - Image */}
-            <div className="relative h-[60vh] max-h-[500px] md:h-[50vh] lg:h-[60vh] lg:max-h-[600px]">
-              <div
-                key={`image-${currentIndex}`}
-                className={cn(
-                  "w-full h-full relative rounded-xl overflow-hidden transition-all duration-500 ease-out",
-                  isAnimating
-                    ? direction === "next"
-                      ? "translate-x-8 opacity-0"
-                      : "-translate-x-8 opacity-0"
-                    : "translate-x-0 opacity-100"
-                )}
-              >
-                {/* Image frame with gradient border */}
-                <div className="absolute -inset-0.5 bg-gradient-to-br from-purple-500/50 to-blue-500/50 rounded-xl blur-sm"></div>
-
-                <div className="absolute inset-0 bg-black/50 rounded-xl z-0"></div>
-
-                <div className="absolute inset-[1px] bg-gray-900 rounded-xl overflow-hidden">
-                  <Image
-                    src={currentCase.image}
-                    alt={`${currentCase.title} case study`}
-                    fill
-                    priority
-                    className="object-cover object-center opacity-80 hover:opacity-100 transition-opacity duration-300"
-                  />
-                </div>
-
-                {/* Decorative elements */}
-                <div className="absolute -bottom-4 -right-4 w-40 h-40 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full blur-2xl"></div>
-              </div>
             </div>
           </div>
         </div>

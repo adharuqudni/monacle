@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Button } from '@/components/ui/button';
 import TiltedCard from './ui/tilt-card';
 
 export function HeroSection() {
@@ -53,7 +52,7 @@ export function HeroSection() {
       <div className="container justify-items-center px-4 relative z-10">
         <TiltedCard
           imageSrc="/images/Hero/hero_preview.png"
-          altText="LOGO"
+          // altText="LOGO"
           containerHeight={isMobile ? '70vh' : '50vh'}
           containerWidth={isMobile ? '90vw' : '50vw'}
           imageHeight={isMobile ? '70vh' : '50vh'}
@@ -61,8 +60,7 @@ export function HeroSection() {
           rotateAmplitude={12}
           scaleOnHover={1.2}
           showMobileWarning={false}
-          showTooltip={true}
-          displayOverlayContent={true}
+          showTooltip={false} 
         />
       </div>
     </section>

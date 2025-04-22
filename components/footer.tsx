@@ -6,9 +6,9 @@ export function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Monocle Agency</h3>
             <p className="text-gray-400 mb-4">
-              {/* 1234 Market Street, Suite 1000 */}
+              PT ABN SENA INDONESIA
               <br />
-              {/* San Francisco, CA 94103 US */}
+              Jalan Mandar Blok DD 12-17
             </p>
           </div>
 
@@ -16,24 +16,24 @@ export function Footer() {
             <h4 className="text-lg font-medium mb-4">About Us</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  Team
+                <a href="#case-study" className="text-gray-400 hover:text-white transition-colors">
+                  Case Study
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  Career
+                <a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors">
+                  How It Works
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  Blog
+                <a href="#services" className="text-gray-400 hover:text-white transition-colors">
+                  Our Service
                 </a>
               </li>
             </ul>
           </div>
 
-          <div>
+          {/* <div>
             <h4 className="text-lg font-medium mb-4">Our Services</h4>
             <ul className="space-y-2">
               <li>
@@ -57,7 +57,7 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           <div>
             <h4 className="text-lg font-medium mb-4">Contact</h4>
@@ -70,8 +70,9 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 w-3/4 h-40 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full opacity-20 blur-3xl"></div>
 
+          {/* FIX: Added pointer-events-none to avoid blocking links */}
+          <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 w-3/4 h-40 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full opacity-20 blur-3xl pointer-events-none"></div>
         </div>
 
         <div className="border-t border-gray-800 pt-8">

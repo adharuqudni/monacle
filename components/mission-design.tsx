@@ -24,19 +24,19 @@ export function MissionDesign() {
           >
             <span className="tag mb-4">Our Mission</span>
             <h2 className="text-3xl md:text-4xl font-bold my-6">
-              We don’t add noise — we sharpen signal.
+              We don’t add noise we sharpen signal.
             </h2>
             <p className="text-gray-300 mb-6">
               Monocle exists to empower brands with focused, high-performing
               digital marketing. We blend precision with creativity, crafting
               bold ideas that cut through and drive what matters. Not just
-              partners — we’re your second set of eyes in the digital chaos.
+              partners we’re your second set of eyes in the digital chaos.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <a
+              {/* <a
                 href="#"
                 className="inline-flex items-center text-secondary font-medium"
               >
@@ -55,7 +55,7 @@ export function MissionDesign() {
                     d="M14 5l7 7m0 0l-7 7m7-7H3"
                   ></path>
                 </svg>
-              </a>
+              </a> */}
             </motion.div>
           </motion.div>
 
