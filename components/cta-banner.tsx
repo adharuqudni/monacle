@@ -48,9 +48,12 @@ export function CtaBanner() {
                 viewport={{ once: true }}
               >
                 <div className="p-[2px] justify-self-center md:justify-self-start rounded-full bg-gradient-to-r from-neon-blue to-neon-purple w-[fit-content]">
+                  <a href="https://wa.me/+62811842484">
                   <Button className="bg-black rounded-full text-white px-8 py-6 text-lg hover:bg-gradient-to-r from-neon-blue to-neon-purple transition-shadow duration-300">
-                    Make Your Next Step Clear
-                  </Button>
+                  Make Your Next Step Clear
+                </Button>
+                  </a>
+                  
                 </div>
               </motion.div>
             </div>

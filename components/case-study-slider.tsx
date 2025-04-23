@@ -111,14 +111,14 @@ export function CaseStudySection() {
               {activeCase.title}
             </h3>
             <p className="text-gray-300 text-lg">{activeCase.description}</p>
-            <Button
+            {/* <Button
               variant="outline"
               className="border-white text-white group hover:bg-transparent hover:text-white hover:border-white"
               onClick={() => window.open(activeCase.link, "_blank")}
             >
               View Details
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            </Button> */}
 
             <div className="flex items-center space-x-4 pt-6">
               <Button

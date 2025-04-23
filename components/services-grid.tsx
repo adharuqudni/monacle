@@ -79,7 +79,7 @@ const FlipCard = ({
       >
         {/* Front of card */}
         <motion.div
-          className="absolute w-full h-full bg-black bg-opacity-50 border border-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"
+          className="absolute w-full h-full bg-black bg-opacity-50 border border-gray-800 rounded-lg p-3 sm:p-4 flex flex-col items-center justify-center"
           style={{
             backfaceVisibility: 'hidden',
             backgroundImage: `url(${service.backgroundImage})`,
@@ -87,23 +87,23 @@ const FlipCard = ({
             backgroundPosition: 'center',
           }}
         >
-          <div className="rounded-2xl w-20 h-20 flex items-center justify-center mb-4">
-            <img src={service.icon} alt={service.title} className="w-16 h-16" />
+          <div className="rounded-2xl w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mb-4">
+            <img src={service.icon} alt={service.title} className="w-12 h-12 sm:w-16 sm:h-16" />
           </div>
-          <h3 className="text-lg font-bold text-white text-center">{service.title}</h3>
+          <h3 className="text-base sm:text-lg font-bold text-white text-center">{service.title}</h3>
         </motion.div>
 
         {/* Back of card */}
         <motion.div
-          className="absolute w-full h-full bg-gradient-to-b from-gray-900 to-black border border-gray-800 rounded-lg p-4 flex flex-col justify-center"
+          className="absolute w-full h-full bg-gradient-to-b from-gray-900 to-black border border-gray-800 rounded-lg p-3 sm:p-4 flex flex-col justify-center"
           style={{
             backfaceVisibility: 'hidden',
             rotateY: 180,
             transformStyle: 'preserve-3d',
           }}
         >
-          <h3 className="text-lg font-bold mb-2 text-neon-blue">{service.title}</h3>
-          <p className="text-gray-300 text-sm">{service.detailedDescription}</p>
+          <h3 className="text-base sm:text-lg font-bold mb-2 text-neon-blue">{service.title}</h3>
+          <p className="text-xs sm:text-sm text-gray-300">{service.detailedDescription}</p>
         </motion.div>
       </motion.div>
     </div>
@@ -141,14 +141,13 @@ export function ServicesGrid() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="tag mb-4">Our Services</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 mt-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 mt-8">
             Smart Solutions for Brands
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
-            We combine creative strategy, smart execution, and data-driven
-            optimization to help you thrive in the digital world.
+          <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto">
+            We combine creative strategy, smart execution, and data-driven optimization to help you thrive in the digital world.
           </p>
-          <p className="text-gray-400 text-sm mt-4">Hover over a service to learn more</p>
+          <p className="text-gray-400 text-xs sm:text-sm mt-4">Hover over a service to learn more</p>
         </div>
 
         <motion.div
