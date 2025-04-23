@@ -67,7 +67,7 @@ export function Header() {
 
         {/* Contact Button (Desktop Version) */}
         <div className="hidden md:block">
-          <a href="https://wa.me/+62817842484">
+          <a href="https://wa.me/+62811842484">
             <Button
               variant="outline"
               className="rounded-full bg-gray-200 text-black hover:bg-white flex items-center gap-2"

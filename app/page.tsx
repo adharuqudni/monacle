@@ -39,9 +39,6 @@ export default function Home() {
       <Suspense fallback={<div className="">Loading...</div>}>
         <CtaBanner />
       </Suspense>
-      <Suspense fallback={<div className="">Loading...</div>}>
-        <LeadsFormSection />
-      </Suspense>
       <Footer />
     </main>
   )

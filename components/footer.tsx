@@ -62,7 +62,7 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-medium mb-4">Contact</h4>
             <ul className="space-y-2">
-              <li className="text-gray-400">+62-817-842-484</li>
+              <li className="text-gray-400">+62-811-842-484</li>
               <li>
                 <a href="mailto:contact@monocle.com" className="text-gray-400 hover:text-white transition-colors">
                   hello@monocleagency.co.id
