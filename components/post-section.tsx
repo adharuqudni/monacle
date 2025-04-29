@@ -1,38 +1,14 @@
+// components/post-section.tsx
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-
-interface ImageFormat {
-  url: string;
-  width: number;
-  height: number;
-}
-
-interface ImageFormats {
-  thumbnail?: ImageFormat;
-  small?: ImageFormat;
-  medium?: ImageFormat;
-}
-
-interface ImageData {
-  id: number;
-  documentId: string;
-  name: string;
-  url: string;
-  formats: ImageFormats;
-}
 
 interface Post {
   id: number;
-  documentId: string;
-  Title: string;
-  Description: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  Images?: ImageData;
+  title: string;
+  description: string;
+  image: string;
+  created_at: string;
 }
 
 interface PostSectionProps {
@@ -42,8 +18,8 @@ interface PostSectionProps {
 }
 
 export function PostSection({ posts }: PostSectionProps) {
-  const [displayedPosts, setDisplayedPosts] = useState(3); // Start with 3 posts
-  const [isExpanded, setIsExpanded] = useState(false); // State to track if posts are expanded or collapsed
+  const [displayedPosts, setDisplayedPosts] = useState(3);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const truncateDescription = (description: string, wordLimit: number): string => {
     const words = description.split(" ");
@@ -53,11 +29,11 @@ export function PostSection({ posts }: PostSectionProps) {
 
   const togglePosts = () => {
     if (isExpanded) {
-      setDisplayedPosts(3); // Reset to 3 posts if expanded
+      setDisplayedPosts(3);
     } else {
-      setDisplayedPosts(posts.data.length); // Show all posts if not expanded
+      setDisplayedPosts(posts.data.length);
     }
-    setIsExpanded(!isExpanded); // Toggle the state
+    setIsExpanded(!isExpanded);
   };
 
   if (!posts.data || posts.data.length === 0) {
@@ -89,28 +65,18 @@ export function PostSection({ posts }: PostSectionProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.data.slice(0, displayedPosts).map((post) => {
-            const { id, Title, Description, Images } = post;
-
-            // Check if images exist and fetch URL or default image
-            const imageUrl =
-              Images?.formats?.thumbnail?.url ||
-              Images?.formats?.medium?.url ||
-              Images?.formats?.small?.url ||
-              Images?.url ||
-              "/path/to/default-image.jpg"; // Fallback to default image if no image available
-
-            const fullImageUrl = `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${imageUrl}`;
-            const truncatedDescription = truncateDescription(Description, 20);
+            const imageUrl = post.image || "/path/to/default-image.jpg";
+            const truncatedDescription = truncateDescription(post.description, 20);
 
             return (
               <div
-                key={id}
+                key={post.id}
                 className="bg-black/30 border border-purple-500 text-white rounded-lg shadow-md backdrop-blur-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1"
               >
                 <div
                   className="relative h-32 w-full bg-cover bg-center"
                   style={{
-                    backgroundImage: `url(${fullImageUrl})`,
+                    backgroundImage: `url(${imageUrl})`,
                   }}
                 >
                   {!imageUrl && (
@@ -122,17 +88,17 @@ export function PostSection({ posts }: PostSectionProps) {
 
                 <div className="p-4">
                   <h3 className="text-lg font-semibold mb-2 line-clamp-2">
-                    {Title}
+                    {post.title}
                   </h3>
                   <p className="text-gray-300 text-sm mb-3 line-clamp-3">
                     {truncatedDescription}
                   </p>
-                  <Link
-                    href={`/posts/${id}`}
+                  {/* <Link
+                    href={`/posts/${post.id}`}
                     className="inline-block text-xs font-medium text-purple-300 hover:text-purple-100 transition-colors"
                   >
                     Read more →
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             );

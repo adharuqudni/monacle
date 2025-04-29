@@ -1,3 +1,5 @@
+// app/page.tsx
+
 import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
 import { TrustedBy } from "@/components/trusted-by";
@@ -12,40 +14,20 @@ import { PostSection } from "@/components/post-section";
 import { Footer } from "@/components/footer";
 import { Suspense } from "react";
 
-interface ImageFormat {
-  url: string;
-  width: number;
-  height: number;
-}
-
-interface ImageFormats {
-  thumbnail?: ImageFormat;
-  small?: ImageFormat;
-  medium?: ImageFormat;
-}
-
-interface Image {
-  id: number;
-  documentId: string;
-  name: string;
-  url: string;
-  formats: ImageFormats;
-}
-
 interface Post {
   id: number;
-  documentId: string;
-  Title: string;
-  Description: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  Images?: Image;
+  title: string;
+  description: string;
+  image: string;
+  created_at: string;
 }
 
+// Revalidate data every 60 seconds
+export const revalidate = 60;
+
 export default async function Home() {
-  const res = await fetch(`${process.env.STRAPI_BASE_URL}/api/posts?populate=Images`, {
-    cache: "no-store",
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
+    next: { revalidate: 60 },
   });
 
   if (!res.ok) {
@@ -58,7 +40,13 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Header />
-      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading hero...</div>}>
+      <Suspense
+        fallback={
+          <div className="h-screen flex items-center justify-center">
+            Loading hero...
+          </div>
+        }
+      >
         <HeroSection />
       </Suspense>
       <Suspense fallback={<div className="py-12">Loading...</div>}>
