@@ -8,14 +8,14 @@ export function ProcessDiagram() {
     >
       {/* Header Section */}
       <div className="text-center mb-16 relative z-10">
-        <span className="tag mb-4">Our Process</span>
-        <h2 className="text-3xl md:text-4xl font-bold my-4">
+        <span className="tag mb-4">How We Work</span>
+        {/* <h2 className="text-3xl md:text-4xl font-bold my-4">
           How We Make It Happen
         </h2>
         <p className="text-gray-300 max-w-2xl mx-auto">
           A simple, transparent process designed to help your brand grow
           efficiently.
-        </p>
+        </p> */}
       </div>
 
       {/* Main Content */}
